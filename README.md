@@ -1,13 +1,12 @@
-#Game Hub
+# Game Hub
 
-Welcome to **Game Hub** – a static site for playing unblocked HTML5 games online.
+Welcome to **Game Hub** – a static website for playing unblocked HTML5 games online.
 
-## Features
-- Mobile-friendly
-- Fully static (no backend needed)
-- Embed popular games from UBG77
+## 🚀 Features
+- Fully static site, works on GitHub Pages
+- Responsive layout with embedded games
+- Easy to add or remove games
+- Great for school use or personal entertainment
 
-## How to Deploy
-1. Upload to GitHub
-2. Enable GitHub Pages from repo settings
-3. Visit: https://yourusername.github.io/game-hub/
+## 🌐 Live Demo
+After enabling GitHub Pages:
