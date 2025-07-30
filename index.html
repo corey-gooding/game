@@ -21,6 +21,45 @@
       margin: 0;
       padding: 0;
     }
+    #content {
+      display: none;
+    }
+    #passwordPrompt {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #121212;
+      flex-direction: column;
+      color: #f1f1f1;
+      font-size: 1.2rem;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      margin-top: 10px;
+      width: 250px;
+      text-align: center;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      background: #1f1f1f;
+      color: #f1f1f1;
+      cursor: pointer;
+      user-select: none;
+    }
+    button:hover {
+      background: #333;
+    }
     header {
       background: #1f1f1f;
       padding: 20px;
@@ -38,7 +77,7 @@
       background: #1e1e1e;
       padding: 10px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
     .game-card iframe {
       width: 100%;
@@ -60,45 +99,80 @@
   </style>
 </head>
 <body>
-  <header>My Game Hub</header>
-  <div class="grid">
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/edit/ovo/" loading="lazy"></iframe>
-      <div class="game-title">OvO</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/game2048/" loading="lazy"></iframe>
-      <div class="game-title">2048</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/subway-surfers/" loading="lazy"></iframe>
-      <div class="game-title">Subway Surfers</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/bitlife/" loading="lazy"></iframe>
-      <div class="game-title">BitLife</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/drive-mad/" loading="lazy"></iframe>
-      <div class="game-title">Drive Mad</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/basket-random/" loading="lazy"></iframe>
-      <div class="game-title">Basket Random</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/1v1-lol/" loading="lazy"></iframe>
-      <div class="game-title">1v1.LOL</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/slope/" loading="lazy"></iframe>
-      <div class="game-title">Slope</div>
-    </div>
-    <div class="game-card">
-      <iframe src="https://ubg77.github.io/snow-rider-3d/" loading="lazy"></iframe>
-      <div class="game-title">Snow Rider 3D</div>
+  <div id="passwordPrompt">
+    <div>Please enter the password to unlock the site:</div>
+    <input type="password" id="passwordInput" autofocus />
+    <button onclick="checkPassword()">Unlock</button>
+    <div id="errorMsg" style="color: #f44336; margin-top: 10px; display:none;">
+      Incorrect password, try again.
     </div>
   </div>
-  <footer>&copy; 2025 YourName. All rights reserved.</footer>
+
+  <div id="content">
+    <header>My Game Hub</header>
+    <div class="grid">
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/edit/ovo/" loading="lazy"></iframe>
+        <div class="game-title">OvO</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/game2048/" loading="lazy"></iframe>
+        <div class="game-title">2048</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/subway-surfers/" loading="lazy"></iframe>
+        <div class="game-title">Subway Surfers</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/bitlife/" loading="lazy"></iframe>
+        <div class="game-title">BitLife</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/drive-mad/" loading="lazy"></iframe>
+        <div class="game-title">Drive Mad</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/basket-random/" loading="lazy"></iframe>
+        <div class="game-title">Basket Random</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/1v1-lol/" loading="lazy"></iframe>
+        <div class="game-title">1v1.LOL</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/slope/" loading="lazy"></iframe>
+        <div class="game-title">Slope</div>
+      </div>
+      <div class="game-card">
+        <iframe src="https://ubg77.github.io/snow-rider-3d/" loading="lazy"></iframe>
+        <div class="game-title">Snow Rider 3D</div>
+      </div>
+    </div>
+    <footer>&copy; 2025 YourName. All rights reserved.</footer>
+  </div>
+
+  <script>
+    const correctPassword = "letmein123"; // Change this to your desired password
+
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value;
+      const errorMsg = document.getElementById('errorMsg');
+
+      if (input === correctPassword) {
+        document.getElementById('passwordPrompt').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    // Press Enter to submit password
+    document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        checkPassword();
+      }
+    });
+  </script>
 </body>
 </html>
+
