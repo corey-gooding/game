@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Game Hub</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -30,7 +38,7 @@
       background: #1e1e1e;
       padding: 10px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
     .game-card iframe {
       width: 100%;
@@ -52,9 +60,7 @@
   </style>
 </head>
 <body>
-
   <header>My Game Hub</header>
-
   <div class="grid">
     <div class="game-card">
       <iframe src="https://ubg77.github.io/edit/ovo/" loading="lazy"></iframe>
@@ -93,8 +99,6 @@
       <div class="game-title">Snow Rider 3D</div>
     </div>
   </div>
-
-  <footer>&copy; 2025 Corey gooding. All rights reserved.</footer>
-
+  <footer>&copy; 2025 YourName. All rights reserved.</footer>
 </body>
 </html>
